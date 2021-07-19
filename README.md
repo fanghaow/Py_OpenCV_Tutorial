@@ -7,7 +7,7 @@
 * Windows
     * 进入cmd,输入以下命令: `pip3 install opencv-python`
     * 可选 : `pip3 install numpy matplotlib`
-* Mac/Linux
+* Mac / Linux
     * 进入终端(Terminal)，输入以下命令: `pip3 install opencv-python`
     * Linux还可以使用命令：`sudo apt install python3-numpy`
     * 可选 : `pip3 install numpy matplotlib`
@@ -122,10 +122,19 @@ import cv2
 ```
 * (2)读写图片
 ```python
+# Read -> cv2.imread(filename,flag)
 img = cv2.imread('images/cat.jpg',0)
-# 1: cv2.IMREAD_COLOR : Loads a color image. Any transparency of image will be neglected. It is the default flag.
-# 0: cv2.IMREAD_GRAYSCALE : Loads image in grayscale mode
-# -1: cv2.IMREAD_UNCHANGED : Loads image as such including alpha channel
+"""
+flag options:
+1 / cv2.IMREAD_COLOR : Loads a color image. Any transparency of image will be neglected. It is the default flag.
+0 / cv2.IMREAD_GRAYSCALE : Loads image in grayscale mode
+-1 / cv2.IMREAD_UNCHANGED : Loads image as such including alpha channel
+"""
+# Show -> cv2.imshow(winname,src)
 cv2.imshow('cat',img)
 cv2.waitKey(3000) # [ms]
+
+# Write -> cv2.imwrite(filename,src)
+img = np.mean(img,2)
+cv2.imwrite('images/cat_gray.jpg',img) # 查看"images/"文件目录下，是否多了一只灰度猫
 ```
